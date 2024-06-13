@@ -2,26 +2,59 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 32px;
 }
 
 .header__container-left {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.header__logo {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 40px;
+  margin: 0 24px 0 0;
 }
 
 .header__date-city {
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: ;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__container-right {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.header__button {
+  border: none;
+  margin: 0 20px 0 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header__name {
+  margin: 0 12px 0 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__avatar {
   height: 40px;
   width: 40px;
+  margin: 0 40px 0 0;
 }

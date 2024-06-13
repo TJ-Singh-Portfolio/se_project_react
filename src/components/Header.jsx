@@ -8,7 +8,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header__container-left">
-        <img className="header__logo" src="" alt="What to Wear Logo" />
+        <p className="header__logo">wtwr°</p>
         <p className="header__date-city">{currentDate}</p>
       </div>
       <div className="header__container-right">
