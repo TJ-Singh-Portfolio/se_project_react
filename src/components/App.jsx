@@ -7,10 +7,13 @@ import Footer from "./Footer";
 import getInfo from "../utils/weatherApi";
 
 function App(props) {
-  const apiInfo = getInfo();
+  let apiInfo = [];
+  getInfo().then((res) => {
+    apiInfo = [...res];
+  });
   //const [temp, city] = apiInfo;
-  //const arr = [1, 2];
-  console.log(apiInfo[0]);
+  console.log(apiInfo);
+  //All of the problems you are running into are coming up due to ansynchroneity.
 
   return (
     <>

@@ -13,12 +13,12 @@ function sendRequest() {
 
 function getInfo() {
   const apiInfo = [];
-  sendRequest().then((res) => {
+  return sendRequest().then((res) => {
     apiInfo.push(res["main"]["temp"]);
     apiInfo.push(res["name"]);
+    return apiInfo;
   });
-  //console.log(apiInfo);
-  return apiInfo;
+  //console.log(apiInfo)
 }
 
 //const apiInfo = getInfo();
