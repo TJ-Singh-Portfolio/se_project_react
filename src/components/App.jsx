@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 //import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import getInfo from "../utils/weatherApi";
+import getInfo from "../utils/errorfix";
 
 function App(props) {
   const apiInfo = getInfo();
