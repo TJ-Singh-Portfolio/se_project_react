@@ -1,6 +1,6 @@
 import "../blocks/Header.css";
 import headerAvatar from "../assets/avatar.png";
-function Header() {
+function Header(props) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -9,7 +9,9 @@ function Header() {
     <div className="header">
       <div className="header__container-left">
         <p className="header__logo">wtwr°</p>
-        <p className="header__date-city">{currentDate}</p>
+        <p className="header__date-city">
+          {currentDate}, {props.name}
+        </p>
       </div>
       <div className="header__container-right">
         <button className="header__button" type="button">

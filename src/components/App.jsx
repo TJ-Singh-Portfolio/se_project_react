@@ -3,13 +3,19 @@ import { useState } from "react";
 import viteLogo from "/vite.svg";
 //import "./App.css";
 import Header from "./Header";
+import Footer from "./Footer";
+import getInfo from "../utils/weatherApi";
 
-function App() {
-  const [count, setCount] = useState(0);
+function App(props) {
+  const apiInfo = getInfo();
+  //const [temp, city] = apiInfo;
+  //const arr = [1, 2];
+  console.log(apiInfo[0]);
 
   return (
     <>
-      <Header />
+      <Header name="Test" />
+      <Footer />
     </>
   );
 }
