@@ -8,10 +8,14 @@ import ModalWithForm from "./ModalWithForm";
 import getInfo from "../utils/weatherApi";
 
 function App(props) {
-  let apiInfo = [];
+  //let apiInfo = [];
+  const [temp, setTemp] = useState([]);
+  const [city, setCity] = useState();
   getInfo().then((res) => {
-    apiInfo = [...res];
-    console.log(apiInfo);
+    //apiInfo = [...res];
+    setTemp(res[0]);
+    setCity(res[1]);
+    //console.log(apiInfo);
   });
   //const [temp, city] = apiInfo;
   //All of the problems you are running into are coming up due to ansynchroneity.
@@ -26,10 +30,10 @@ function App(props) {
     });
   }
   //Add functionality for "Add Clothes" button before adding the close funcionality.
-
+  // You can also style the children of ModalWithForm
   return (
     <>
-      <Header name={apiInfo[0]} />
+      <Header name={temp} />
       <ModalWithForm
         name="form1"
         title="New Garment"
