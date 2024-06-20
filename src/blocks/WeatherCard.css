@@ -1,0 +1,30 @@
+.weather__card {
+  height: 80px;
+  background-color: #00a3ff;
+  position: relative;
+  border-radius: 12px;
+  contain: strict;
+}
+
+.weather__temp {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  color: #fff;
+  padding-top: 20px;
+  margin: 0px 0 20px 16px;
+}
+
+.weather__sun {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.weather__cloud {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}

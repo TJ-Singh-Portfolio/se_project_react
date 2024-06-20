@@ -16,6 +16,13 @@ function getInfo() {
   return sendRequest().then((res) => {
     apiInfo.push(res["main"]["temp"]);
     apiInfo.push(res["name"]);
+    if (res["main"]["temp"] >= 86) {
+      apiInfo.push("hot");
+    } else if (res["main"]["temp"] >= 66) {
+      apiInfo.push("warm");
+    } else {
+      apiInfo.push("cold");
+    }
     return apiInfo;
   });
   //console.log(apiInfo)

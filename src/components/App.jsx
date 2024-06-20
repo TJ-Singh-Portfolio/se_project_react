@@ -3,20 +3,25 @@ import { useState } from "react";
 import viteLogo from "/vite.svg";
 //import "./App.css";
 import Header from "./Header";
+import Main from "./Main";
+import WeatherCard from "./WeatherCard";
 import Footer from "./Footer";
 import ModalWithForm from "./ModalWithForm";
 import getInfo from "../utils/weatherApi";
+import { defaultClothingItems } from "../utils/constants";
 
 function App(props) {
   const [temp, setTemp] = useState([]);
   const [city, setCity] = useState();
+  const [weather, setWeather] = useState();
   const [modalState, setModalState] = useState(closed);
   getInfo().then((res) => {
     //apiInfo = [...res];
     setTemp(Math.floor(res[0]));
     //BE SURE TO DO MATH.FLOOR!
     setCity(res[1]);
-    //console.log(apiInfo);
+    setWeather(res[2]);
+    //console.log(res);
   });
 
   /*function handleClick(event) {
@@ -39,6 +44,7 @@ function App(props) {
           setModalState("opened");
         }}
       />
+      <Main temperature={temp} weather={weather} array={defaultClothingItems} />
       <ModalWithForm
         name="form1"
         title="New Garment"
