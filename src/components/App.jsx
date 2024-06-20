@@ -82,12 +82,20 @@ function App(props) {
         />
         <p className="modal__radio-title">Select the weather type:</p>
         <div className="modal__radio-container">
-          <input type="radio" id="hot" />
-          <label htmlFor="hot">Hot</label>
-          <input type="radio" id="warm" />
-          <label htmlFor="warm">Warm</label>
-          <input type="radio" id="cold" />
-          <label htmlFor="cold">Cold</label>
+          <label htmlFor="hot" className="modal__label">
+            <input type="radio" id="hot" />
+            Hot
+          </label>
+
+          <label htmlFor="warm" className="modal__label">
+            <input type="radio" id="warm" />
+            Warm
+          </label>
+
+          <label htmlFor="cold" className="modal__label">
+            <input type="radio" id="cold" />
+            Cold
+          </label>
         </div>
       </ModalWithForm>
       <Footer />

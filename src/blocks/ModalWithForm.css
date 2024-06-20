@@ -23,6 +23,7 @@
 .modal__container {
   height: 436px;
   width: 496px;
+  box-sizing: border-box;
   margin: auto;
   background: #fff;
   border-radius: 20px;
@@ -59,6 +60,7 @@
 .modal__submit {
   width: 124px;
   height: 26px;
+  margin-top: 32px;
   border-radius: 4px;
   border: none;
   background: #000;
@@ -76,14 +78,27 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
 }
 
 .modal__input {
   border: none;
   border-bottom: 1px;
   padding: 0;
+  margin-bottom: 24px;
 }
 
+.modal__radio-title {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 12px 0;
+}
 .modal__radio-container {
   display: flex;
+  flex-direction: column;
 }
