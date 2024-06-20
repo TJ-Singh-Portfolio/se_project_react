@@ -36,6 +36,7 @@
 
 .header__button {
   border: none;
+  background-color: #fff;
   margin: 0 20px 0 0;
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;

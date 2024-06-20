@@ -51,6 +51,11 @@
   top: 20px;
 }
 
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
 .modal__submit {
   width: 124px;
   height: 26px;
@@ -63,4 +68,22 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
+}
+
+.modal__label {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal__input {
+  border: none;
+  border-bottom: 1px;
+  padding: 0;
+}
+
+.modal__radio-container {
+  display: flex;
 }

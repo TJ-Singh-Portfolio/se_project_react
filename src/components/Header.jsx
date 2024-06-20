@@ -14,8 +14,12 @@ function Header(props) {
         </p>
       </div>
       <div className="header__container-right">
-        <button className="header__button" type="button">
-          Add Clothes
+        <button
+          className="header__button"
+          type="button"
+          onClick={props.buttonClick}
+        >
+          + Add Clothes
         </button>
         <p className="header__name">Terrence Tegegne</p>
         <img
