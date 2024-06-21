@@ -1,0 +1,23 @@
+.main__header {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+  margin: 40px 0 34px 0;
+}
+
+.main__items {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(auto-fit, 325px);
+  grid-template-rows: repeat(auto-fit, 328px);
+  gap: 20px 20px;
+  list-style: none;
+}
+
+.main__item-card {
+  border: 1px;
+  border-color: #000;
+  border-radius: 4px;
+}

@@ -7,6 +7,7 @@ import Main from "./Main";
 import WeatherCard from "./WeatherCard";
 import Footer from "./Footer";
 import ModalWithForm from "./ModalWithForm";
+import ItemModal from "./ItemModal";
 import getInfo from "../utils/weatherApi";
 import { defaultClothingItems } from "../utils/constants";
 
@@ -15,6 +16,9 @@ function App(props) {
   const [city, setCity] = useState();
   const [weather, setWeather] = useState();
   const [modalState, setModalState] = useState(closed);
+  const [itemModalState, setItemModalState] = useState(closed);
+  const [itemModalData, setItemModalData] = useState();
+  //const [] = useState();
   getInfo().then((res) => {
     //apiInfo = [...res];
     setTemp(Math.floor(res[0]));
@@ -23,17 +27,16 @@ function App(props) {
     setWeather(res[2]);
     //console.log(res);
   });
-
-  /*function handleClick(event) {
-    this.addEventListener("mousedown", (event) => {
-      if (
-        event.target.classList.contains("modal_opened") ||
-        event.target.classList.contains("modal__close")
-      ) {
-        this.classList.remove("modal_opened");
-      }
+  function handleCardClick(event) {
+    setItemModalState("opened");
+    setItemModalData({
+      image: event.target.closest("img"),
+      text: event.target.closest("item__text"),
     });
-  }*/
+    console.log(itemModalData);
+    //Recheck how to set states.
+  }
+
   //Add close functionality by hitting "Escape".
   // You can also style the children of ModalWithForm
   return (
@@ -44,7 +47,14 @@ function App(props) {
           setModalState("opened");
         }}
       />
-      <Main temperature={temp} weather={weather} array={defaultClothingItems} />
+      <Main
+        temperature={temp}
+        weather={weather}
+        array={defaultClothingItems}
+        cardClick={(event) => {
+          handleCardClick(event);
+        }}
+      />
       <ModalWithForm
         name="form1"
         title="New Garment"
@@ -104,6 +114,7 @@ function App(props) {
           </label>
         </div>
       </ModalWithForm>
+      <ItemModal state={itemModalState} weather={weather} />
       <Footer />
     </>
   );
