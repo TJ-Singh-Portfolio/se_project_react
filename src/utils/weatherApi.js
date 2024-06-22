@@ -25,12 +25,6 @@ function getInfo() {
     }
     return apiInfo;
   });
-  //console.log(apiInfo)
 }
-
-//const apiInfo = getInfo();
-//console.log(apiInfo);
-
-//console.log("Hi");
 
 export default getInfo;

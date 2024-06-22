@@ -32,8 +32,12 @@ function ItemModal(props) {
           type="button"
           onClick={props.onClose}
         ></button>
-        <img src={props.image} alt="" className="item-modal__image" />
-        <h3 className="item-modal__name">{props.name}</h3>
+        <img
+          src={props.selectedCard.link}
+          alt=""
+          className="item-modal__image"
+        />
+        <h3 className="item-modal__name">{props.selectedCard.name}</h3>
         <p className="item-modal__weather">{`Weather: ${props.weather}`}</p>
       </div>
     </div>

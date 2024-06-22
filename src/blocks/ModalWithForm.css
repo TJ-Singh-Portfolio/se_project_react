@@ -81,6 +81,11 @@
   margin-bottom: 3px;
   display: flex;
   align-items: center;
+  opacity: 50%;
+}
+
+.modal__label:hover {
+  opacity: 100%;
 }
 
 .modal__input {

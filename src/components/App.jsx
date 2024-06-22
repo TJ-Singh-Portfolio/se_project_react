@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-//import reactLogo from "./assets/react.svg";
+
 import viteLogo from "/vite.svg";
 //import "./App.css";
 import Header from "./Header";
@@ -17,8 +17,8 @@ function App(props) {
   const [weather, setWeather] = useState();
   const [modalState, setModalState] = useState(closed);
   const [itemModalState, setItemModalState] = useState(closed);
-  const [itemModalImage, setItemModalImage] = useState();
-  const [itemModalText, setItemModalText] = useState();
+
+  const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
     getInfo().then((res) => {
@@ -29,16 +29,11 @@ function App(props) {
     });
   }, []);
 
-  function handleCardClick(event) {
+  function handleCardClick(card) {
     setItemModalState("opened");
-    setItemModalImage(event.target.closest("img").src);
-    //setItemModalText("Cap");
-    setItemModalText(event.target.closest("p").textContent);
-    console.log(itemModalText);
+    setSelectedCard(card);
   }
 
-  //Add close functionality by hitting "Escape".
-  // You can also style the children of ModalWithForm
   return (
     <>
       <Header
@@ -51,17 +46,14 @@ function App(props) {
         temperature={temp}
         weather={weather}
         array={defaultClothingItems}
-        cardClick={(event) => {
-          handleCardClick(event);
-        }}
+        cardClick={handleCardClick}
+        setSelectedCard={setSelectedCard}
       />
       <ModalWithForm
         name="form1"
         title="New Garment"
         buttonText="Add Garment"
         onClose={() => {
-          console.log("Clicked");
-
           setModalState("closed");
         }}
         state={modalState}
@@ -87,29 +79,26 @@ function App(props) {
         <p className="modal__radio-title">Select the weather type:</p>
         <div className="modal__radio-container">
           <label htmlFor="hot" className="modal__label">
-            <input type="radio" id="hot" />
+            <input type="radio" id="hot" name="weather" />
             Hot
           </label>
 
           <label htmlFor="warm" className="modal__label">
-            <input type="radio" id="warm" />
+            <input type="radio" id="warm" name="weather" />
             Warm
           </label>
 
           <label htmlFor="cold" className="modal__label">
-            <input type="radio" id="cold" />
+            <input type="radio" id="cold" name="weather" />
             Cold
           </label>
         </div>
       </ModalWithForm>
       <ItemModal
+        selectedCard={selectedCard}
         state={itemModalState}
         weather={weather}
-        name={itemModalText}
-        image={itemModalImage}
         onClose={() => {
-          console.log("Clicked");
-
           setItemModalState("closed");
         }}
       />
