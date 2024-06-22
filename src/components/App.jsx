@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 //import "./App.css";
@@ -17,24 +17,24 @@ function App(props) {
   const [weather, setWeather] = useState();
   const [modalState, setModalState] = useState(closed);
   const [itemModalState, setItemModalState] = useState(closed);
-  const [itemModalData, setItemModalData] = useState();
-  //const [] = useState();
-  getInfo().then((res) => {
-    //apiInfo = [...res];
-    setTemp(Math.floor(res[0]));
-    //BE SURE TO DO MATH.FLOOR!
-    setCity(res[1]);
-    setWeather(res[2]);
-    //console.log(res);
-  });
+  const [itemModalImage, setItemModalImage] = useState();
+  const [itemModalText, setItemModalText] = useState();
+
+  useEffect(() => {
+    getInfo().then((res) => {
+      setTemp(Math.floor(res[0]));
+      // Math.floor() is used here because requests will keep firing to the server otherwise.
+      setCity(res[1]);
+      setWeather(res[2]);
+    });
+  }, []);
+
   function handleCardClick(event) {
     setItemModalState("opened");
-    setItemModalData({
-      image: event.target.closest("img"),
-      text: event.target.closest("item__text"),
-    });
-    console.log(itemModalData);
-    //Recheck how to set states.
+    setItemModalImage(event.target.closest("img").src);
+    //setItemModalText("Cap");
+    setItemModalText(event.target.closest("p").textContent);
+    console.log(itemModalText);
   }
 
   //Add close functionality by hitting "Escape".
@@ -59,22 +59,10 @@ function App(props) {
         name="form1"
         title="New Garment"
         buttonText="Add Garment"
-        onClose={(event) => {
+        onClose={() => {
           console.log("Clicked");
-          if (
-            event.target.classList.contains("modal_opened") ||
-            event.target.classList.contains("modal__close")
-          ) {
-            setModalState("closed");
-          }
-        }}
-        onKeyClose={(event) => {
-          console.log(event.key);
-          if (event.key === "Escape") {
-            console.log("Hit Esc");
-            setModalState("closed");
-          }
-          console.log("Wrong Place");
+
+          setModalState("closed");
         }}
         state={modalState}
       >
@@ -114,7 +102,17 @@ function App(props) {
           </label>
         </div>
       </ModalWithForm>
-      <ItemModal state={itemModalState} weather={weather} />
+      <ItemModal
+        state={itemModalState}
+        weather={weather}
+        name={itemModalText}
+        image={itemModalImage}
+        onClose={() => {
+          console.log("Clicked");
+
+          setItemModalState("closed");
+        }}
+      />
       <Footer />
     </>
   );
