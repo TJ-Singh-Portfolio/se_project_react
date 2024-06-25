@@ -75,17 +75,13 @@ function App(props) {
         temperature={temp}
         weather={weather}
         array={defaultClothingItems}
-        cardClick={handleCardClick}
+        onClick={handleCardClick}
         setSelectedCard={setSelectedCard}
       />
       <ModalWithForm
         name="form1"
         title="New Garment"
         buttonText="Add Garment"
-        /* onClose={() => {
-          setModalState("closed");
-        }} */
-
         state={modalState}
       >
         <label className="modal__label" htmlFor="name">
@@ -147,9 +143,6 @@ function App(props) {
         selectedCard={selectedCard}
         state={itemModalState}
         weather={weather}
-        /* onClose={() => {
-          setItemModalState("closed");
-        }} */
       />
       <Footer />
     </div>

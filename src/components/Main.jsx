@@ -17,7 +17,7 @@ function Main(props) {
             <li className="main__item-card" key={item._id}>
               <ItemCard
                 card={item}
-                onClick={props.cardClick}
+                onClick={props.onClick}
                 setSelectedCard={props.setSelectedCard}
               />
             </li>

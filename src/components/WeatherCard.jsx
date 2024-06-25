@@ -5,8 +5,8 @@ function WeatherCard(props) {
   return (
     <div className="weather__card">
       <p className="weather__temp">{`${props.temperature}°F`}</p>
-      <img src={sun} alt="" className="weather__sun" />
-      <img src={cloud} alt="" className="weather__cloud" />
+      <img src={sun} alt="A picture of the Sun." className="weather__sun" />
+      <img src={cloud} alt="A picture of a cloud." className="weather__cloud" />
     </div>
   );
 }

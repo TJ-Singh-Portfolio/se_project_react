@@ -7,7 +7,11 @@ function ItemCard(props) {
   return (
     <div className="item__container" onClick={handleClick}>
       <p className="item__text">{props.card.name}</p>
-      <img src={props.card.link} alt="" className="item__image" />
+      <img
+        src={props.card.link}
+        alt={props.card.name}
+        className="item__image"
+      />
     </div>
   );
 }
