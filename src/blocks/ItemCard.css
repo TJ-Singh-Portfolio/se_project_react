@@ -1,0 +1,21 @@
+.item__container {
+  position: relative;
+}
+.item__text {
+  position: absolute;
+  top: 15px;
+  left: 125px;
+  background-color: #fff;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 2px 12px;
+  border-radius: 4px;
+}
+.item__image {
+  height: 328px;
+  width: 325px;
+  border-radius: 4px;
+}
