@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../blocks/ModalWithForm.css";
 
 function ModalWithForm(props) {
-  useEffect(() => {
+  /* useEffect(() => {
     function handleClickClose(event) {
       if (
         event.target.classList.contains("modal_opened") ||
@@ -23,7 +23,7 @@ function ModalWithForm(props) {
       document.removeEventListener("mousedown", handleClickClose);
       document.removeEventListener("keydown", handleEscapeClose);
     };
-  }, []);
+  }, []); */
 
   return (
     <div className={`modal modal_${props.state}`}>
@@ -32,7 +32,7 @@ function ModalWithForm(props) {
         <button
           className="modal__close"
           type="button"
-          onClick={props.onClose}
+          //onClick={props.onClose}
         ></button>
         <form action="" className="modal__form" name={props.name}>
           {props.children}

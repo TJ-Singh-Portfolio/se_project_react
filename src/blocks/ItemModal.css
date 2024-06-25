@@ -20,6 +20,10 @@
   top: 20px;
 }
 
+.item-modal__close:hover {
+  cursor: pointer;
+}
+
 .item-modal__name {
   margin: 20px 0 12px 32px;
   font-family: "Cabinet Grotesk", sans-serif;

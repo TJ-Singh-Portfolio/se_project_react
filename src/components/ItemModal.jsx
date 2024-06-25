@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../blocks/ItemModal.css";
 function ItemModal(props) {
-  useEffect(() => {
+  /* useEffect(() => {
     function handleClickClose(event) {
       if (
         event.target.classList.contains("modal_opened") ||
@@ -22,7 +22,7 @@ function ItemModal(props) {
       document.removeEventListener("mousedown", handleClickClose);
       document.removeEventListener("keydown", handleEscapeClose);
     };
-  }, []);
+  }, []); */
 
   return (
     <div className={`modal modal_${props.state}`}>
@@ -30,7 +30,7 @@ function ItemModal(props) {
         <button
           className="item-modal__close"
           type="button"
-          onClick={props.onClose}
+          //onClick={props.onClose}
         ></button>
         <img
           src={props.selectedCard.link}
