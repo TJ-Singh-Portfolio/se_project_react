@@ -18,7 +18,7 @@ function Main(props) {
               <ItemCard
                 card={item}
                 onClick={props.onClick}
-                setSelectedCard={props.setSelectedCard}
+                //setSelectedCard={props.setSelectedCard}
               />
             </li>
           );

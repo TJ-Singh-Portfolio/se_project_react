@@ -4,7 +4,6 @@ import viteLogo from "/vite.svg";
 import "../App.css";
 import Header from "./Header";
 import Main from "./Main";
-import WeatherCard from "./WeatherCard";
 import Footer from "./Footer";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
@@ -17,7 +16,6 @@ function App(props) {
   const [weather, setWeather] = useState();
   const [modalState, setModalState] = useState(closed);
   const [itemModalState, setItemModalState] = useState(closed);
-
   const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
@@ -76,7 +74,7 @@ function App(props) {
         weather={weather}
         array={defaultClothingItems}
         onClick={handleCardClick}
-        setSelectedCard={setSelectedCard}
+        //setSelectedCard={setSelectedCard}
       />
       <ModalWithForm
         name="form1"
