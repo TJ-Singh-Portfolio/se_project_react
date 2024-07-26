@@ -1,5 +1,7 @@
 import "../blocks/Header.css";
 import headerAvatar from "../assets/avatar.png";
+import ToggleSwitch from "./ToggleSwitch";
+
 function Header(props) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -14,6 +16,7 @@ function Header(props) {
         </p>
       </div>
       <div className="header__container-right">
+        <ToggleSwitch checked={props.checked} onClick={props.checkboxClick} />
         <button
           className="header__button"
           type="button"

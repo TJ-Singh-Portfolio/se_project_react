@@ -25,6 +25,7 @@ function getInfo() {
     } else {
       apiInfo.push("cold");
     }
+    apiInfo.push(Math.round(((res["main"]["temp"] - 32) * 5) / 9)); //Math.round((data.main.temp - 32) * 5/9)
     return apiInfo;
   });
 }
