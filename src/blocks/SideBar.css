@@ -1,0 +1,23 @@
+.sidebar__content {
+  width: 230px;
+  margin-right: 116px;
+}
+.sidebar__profile-container {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__profile-avatar {
+  height: 56px;
+  width: 56px;
+  margin-right: 16px;
+}
+
+.sidebar__profile-name {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24.8px;
+  margin: 0;
+}

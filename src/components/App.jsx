@@ -1,12 +1,13 @@
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import viteLogo from "/vite.svg";
 import "../App.css";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import ModalWithForm from "./ModalWithForm";
+import AddItemModal from "./AddItemModal";
 import ItemModal from "./ItemModal";
+import Profile from "./Profile";
 import getInfo from "../utils/weatherApi";
 import { defaultClothingItems } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
@@ -81,6 +82,15 @@ function App(props) {
     }
   }
 
+  function handleAddItemSubmit({
+    nameInputValue,
+    imageInputValue,
+    weatherInputValue,
+  }) {
+    console.log(nameInputValue, imageInputValue, weatherInputValue);
+    setModalState("closed");
+  }
+
   return (
     <div className="app__page">
       <CurrentTemperatureUnitContext.Provider
@@ -94,74 +104,25 @@ function App(props) {
           checked={checkboxState}
           checkboxClick={handleCheckboxClick}
         />
-        <Main
-          temperature={temp}
-          weather={weather}
-          array={defaultClothingItems}
-          onClick={handleCardClick}
-          //setSelectedCard={setSelectedCard}
-        />
-        <ModalWithForm
-          name="form1"
-          title="New Garment"
-          buttonText="Add Garment"
-          state={modalState}
-        >
-          <label className="modal__label" htmlFor="name">
-            Name
-          </label>
-          <input
-            className="modal__input"
-            type="text"
-            id="name"
-            placeholder="Name"
+        <Routes>
+          <Route
+            path="/se_project_react/"
+            element={
+              <Main
+                temperature={temp}
+                weather={weather}
+                array={defaultClothingItems}
+                onClick={handleCardClick}
+                //setSelectedCard={setSelectedCard}
+              />
+            }
           />
-          <label className="modal__label" htmlFor="image">
-            Image
-          </label>
-          <input
-            className="modal__input"
-            type="text"
-            id="image"
-            placeholder="Image URL"
+          <Route
+            path="/se_project_react/profile"
+            element={<Profile array={defaultClothingItems} />}
           />
-          <p className="modal__radio-title">Select the weather type:</p>
-          <div className="modal__radio-container">
-            <div className="modal__radio-box">
-              <input
-                className="modal__radio-box"
-                type="radio"
-                id="hot"
-                name="weather"
-              />
-              <label htmlFor="hot" className="modal__radio-label">
-                Hot
-              </label>
-            </div>
-            <div className="modal__radio-box">
-              <input
-                className="modal__radio-box"
-                type="radio"
-                id="warm"
-                name="weather"
-              />
-              <label htmlFor="warm" className="modal__radio-label">
-                Warm
-              </label>
-            </div>
-            <div className="modal__radio-box">
-              <input
-                className="modal__radio-box"
-                type="radio"
-                id="cold"
-                name="weather"
-              />
-              <label htmlFor="cold" className="modal__radio-label">
-                Cold
-              </label>
-            </div>
-          </div>
-        </ModalWithForm>
+        </Routes>
+        <AddItemModal state={modalState} onAddItem={handleAddItemSubmit} />
         <ItemModal
           selectedCard={selectedCard}
           state={itemModalState}

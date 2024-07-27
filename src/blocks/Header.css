@@ -11,6 +11,13 @@
   align-items: center;
 }
 
+.header__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
 .header__logo {
   font-family: "Cabinet Grotesk", sans-serif;
   font-style: normal;
