@@ -8,7 +8,7 @@ function ItemCard(props) {
     <div className="item__container" onClick={handleClick}>
       <p className="item__text">{props.card.name}</p>
       <img
-        src={props.card.link}
+        src={props.card.imageUrl}
         alt={props.card.name}
         className="item__image"
       />

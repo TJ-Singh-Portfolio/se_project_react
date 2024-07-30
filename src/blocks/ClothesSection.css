@@ -1,6 +1,7 @@
 .clothes-section__content {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .clothes-section__header {
@@ -40,4 +41,5 @@
 .clothes-section__items-card {
   border: 1px;
   border-color: #000;
+  max-height: 328px;
 }

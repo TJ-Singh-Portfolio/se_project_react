@@ -41,3 +41,21 @@
   font-size: 20px;
   line-height: 24px;
 }
+
+.item-modal__delete {
+  border: none;
+  background: none;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff4d00;
+  position: absolute;
+  right: 32px;
+  bottom: 68px;
+}
+
+.item-modal__delete {
+  cursor: pointer;
+}

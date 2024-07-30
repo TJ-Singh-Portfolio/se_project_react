@@ -9,6 +9,7 @@ import AddItemModal from "./AddItemModal";
 import ItemModal from "./ItemModal";
 import Profile from "./Profile";
 import getInfo from "../utils/weatherApi";
+import { getItems, addItem, deleteItem } from "../utils/api";
 import { defaultClothingItems } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
@@ -18,6 +19,7 @@ function App(props) {
   const [temp, setTemp] = useState(tempF);
   const [city, setCity] = useState();
   const [weather, setWeather] = useState();
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [modalState, setModalState] = useState(closed);
   const [itemModalState, setItemModalState] = useState(closed);
   const [checkboxState, setCheckboxState] = useState(false);
@@ -37,6 +39,13 @@ function App(props) {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  useEffect(() => {
+    getItems().then((res) => {
+      setClothingItems(res);
+    });
+  }, []);
+
   useEffect(() => {
     function onClose() {
       setModalState("closed");
@@ -87,8 +96,27 @@ function App(props) {
     imageInputValue,
     weatherInputValue,
   }) {
-    console.log(nameInputValue, imageInputValue, weatherInputValue);
+    //console.log(nameInputValue, imageInputValue, weatherInputValue);
+    const item = {
+      _id: 99, // Hard-coded for now
+      name: nameInputValue,
+      weather: weatherInputValue,
+      imageUrl: imageInputValue,
+    };
+    addItem();
+    setClothingItems([item, ...clothingItems]);
     setModalState("closed");
+  }
+
+  function handleDeleteItem(selectedCard) {
+    deleteItem();
+    console.log(selectedCard);
+    const filteredArray = clothingItems.filter((item) => {
+      return item.name !== selectedCard.name ? item : null;
+    });
+    setClothingItems(filteredArray);
+    console.log(clothingItems);
+    setItemModalState("closed");
   }
 
   return (
@@ -111,7 +139,7 @@ function App(props) {
               <Main
                 temperature={temp}
                 weather={weather}
-                array={defaultClothingItems}
+                array={clothingItems}
                 onClick={handleCardClick}
                 //setSelectedCard={setSelectedCard}
               />
@@ -119,7 +147,7 @@ function App(props) {
           />
           <Route
             path="/se_project_react/profile"
-            element={<Profile array={defaultClothingItems} />}
+            element={<Profile array={clothingItems} />}
           />
         </Routes>
         <AddItemModal state={modalState} onAddItem={handleAddItemSubmit} />
@@ -127,6 +155,7 @@ function App(props) {
           selectedCard={selectedCard}
           state={itemModalState}
           weather={weather}
+          onClick={handleDeleteItem}
         />
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
