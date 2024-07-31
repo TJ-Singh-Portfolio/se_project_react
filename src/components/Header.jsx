@@ -19,7 +19,7 @@ function Header(props) {
         </p>
       </div>
       <div className="header__container-right">
-        <ToggleSwitch checked={props.checked} onClick={props.checkboxClick} />
+        <ToggleSwitch checked={props.checked} onChange={props.onChange} />
         <button
           className="header__button"
           type="button"

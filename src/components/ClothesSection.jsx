@@ -6,7 +6,11 @@ function ClothesSection(props) {
     <div className="clothes-section__content">
       <div className="clothes-section__header">
         <p className="clothes-section__header-text">Your Items</p>
-        <button className="clothes-section__header-button" type="button">
+        <button
+          className="clothes-section__header-button"
+          type="button"
+          onClick={props.onClick}
+        >
           + Add New
         </button>
       </div>

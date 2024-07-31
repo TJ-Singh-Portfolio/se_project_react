@@ -10,7 +10,6 @@ import ItemModal from "./ItemModal";
 import Profile from "./Profile";
 import getInfo from "../utils/weatherApi";
 import { getItems, addItem, deleteItem } from "../utils/api";
-import { defaultClothingItems } from "../utils/constants";
 import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
 
 function App(props) {
@@ -19,7 +18,7 @@ function App(props) {
   const [temp, setTemp] = useState(tempF);
   const [city, setCity] = useState();
   const [weather, setWeather] = useState();
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [modalState, setModalState] = useState(closed);
   const [itemModalState, setItemModalState] = useState(closed);
   const [checkboxState, setCheckboxState] = useState(false);
@@ -98,25 +97,29 @@ function App(props) {
   }) {
     //console.log(nameInputValue, imageInputValue, weatherInputValue);
     const item = {
-      _id: 99, // Hard-coded for now
       name: nameInputValue,
       weather: weatherInputValue,
       imageUrl: imageInputValue,
     };
-    addItem();
-    setClothingItems([item, ...clothingItems]);
-    setModalState("closed");
+    addItem(item).then((res) => {
+      setClothingItems([res, ...clothingItems]);
+      setModalState("closed");
+    });
+    //setClothingItems([item, ...clothingItems]);
+    //setModalState("closed");
   }
 
   function handleDeleteItem(selectedCard) {
-    deleteItem();
-    console.log(selectedCard);
-    const filteredArray = clothingItems.filter((item) => {
-      return item.name !== selectedCard.name ? item : null;
+    deleteItem(selectedCard._id).then((res) => {
+      const filteredArray = clothingItems.filter((item) => {
+        return item.name !== selectedCard.name ? item : null;
+      });
+      setClothingItems(filteredArray);
+      setItemModalState("closed");
     });
-    setClothingItems(filteredArray);
-    console.log(clothingItems);
-    setItemModalState("closed");
+    console.log(selectedCard._id);
+    //console.log(clothingItems);
+    //setItemModalState("closed");
   }
 
   return (
@@ -130,7 +133,7 @@ function App(props) {
             setModalState("opened");
           }}
           checked={checkboxState}
-          checkboxClick={handleCheckboxClick}
+          onChange={handleCheckboxClick}
         />
         <Routes>
           <Route
@@ -147,7 +150,9 @@ function App(props) {
           />
           <Route
             path="/se_project_react/profile"
-            element={<Profile array={clothingItems} />}
+            element={<Profile array={clothingItems} buttonClick={() => {
+              setModalState("opened");
+            }} />}
           />
         </Routes>
         <AddItemModal state={modalState} onAddItem={handleAddItemSubmit} />

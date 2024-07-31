@@ -6,7 +6,7 @@ function Profile(props) {
   return (
     <div className="profile__content">
       <SideBar />
-      <ClothesSection array={props.array} />
+      <ClothesSection array={props.array} onClick={props.buttonClick} />
     </div>
   );
 }

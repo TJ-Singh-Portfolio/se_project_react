@@ -4,7 +4,7 @@ import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitCon
 
 function ToggleSwitch(props) {
   const handleClick = () => {
-    props.onClick();
+    props.onChange();
   };
   const currentUnit = React.useContext(CurrentTemperatureUnitContext);
   return (
@@ -18,6 +18,8 @@ function ToggleSwitch(props) {
       />
       <label className="toggle__label" htmlFor={`temp-switch`}>
         <span className="toggle__span"></span>
+        <span className="toggle__text toggle__text_left">F</span>
+        <span className="toggle__text toggle__text_right">C</span>
       </label>
     </>
   );

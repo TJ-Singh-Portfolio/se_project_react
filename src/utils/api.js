@@ -12,12 +12,23 @@ const getItems = () => {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
 };
 
-const addItem = () => {
-  //logic of api method
+const addItem = ({ name, weather, imageUrl }) => {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify({
+      name: name,
+      weather: weather,
+      imageUrl: imageUrl,
+    }),
+  }).then(processServerResponse);
 };
 
-const deleteItem = () => {
-  //logic of api method
+const deleteItem = (id) => {
+  return fetch(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: headers,
+  }).then(processServerResponse);
 };
 
 export { getItems, addItem, deleteItem };
