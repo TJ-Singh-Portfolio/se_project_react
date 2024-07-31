@@ -9,7 +9,7 @@ function ClothesSection(props) {
         <button
           className="clothes-section__header-button"
           type="button"
-          onClick={props.onClick}
+          onClick={props.buttonClick}
         >
           + Add New
         </button>
@@ -19,7 +19,7 @@ function ClothesSection(props) {
           {props.array.map((item) => {
             return (
               <li className="clothes-section__items-card" key={item._id}>
-                <ItemCard card={item} />
+                <ItemCard card={item} onClick={props.onClick} />
               </li>
             );
           })}
