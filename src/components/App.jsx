@@ -130,7 +130,7 @@ function App(props) {
         />
         <Routes>
           <Route
-            path="/se_project_react/"
+            path="/"
             element={
               <Main
                 temperature={temp}
@@ -142,7 +142,7 @@ function App(props) {
             }
           />
           <Route
-            path="/se_project_react/profile"
+            path="/profile"
             element={
               <Profile
                 array={clothingItems}

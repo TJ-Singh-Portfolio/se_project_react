@@ -11,7 +11,7 @@ function Header(props) {
   return (
     <div className="header">
       <div className="header__container-left">
-        <Link to="/se_project_react/" className="header__link">
+        <Link to="/" className="header__link">
           <p className="header__logo">wtwr°</p>
         </Link>
         <p className="header__date-city">
@@ -27,7 +27,7 @@ function Header(props) {
         >
           + Add Clothes
         </button>
-        <Link to="/se_project_react/profile" className="header__link">
+        <Link to="/profile" className="header__link">
           <p className="header__name">Terrence Tegegne</p>
           <img
             className="header__avatar"
