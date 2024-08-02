@@ -9,7 +9,7 @@ function Header(props) {
     day: "numeric",
   });
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__container-left">
         <Link to="/" className="header__link">
           <p className="header__logo">wtwr°</p>
@@ -36,7 +36,7 @@ function Header(props) {
           />
         </Link>
       </div>
-    </div>
+    </header>
   );
 }
 

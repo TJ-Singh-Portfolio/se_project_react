@@ -14,7 +14,7 @@ function ToggleSwitch(props) {
         className="toggle__checkbox"
         id={`temp-switch`}
         checked={props.checked}
-        onClick={handleClick}
+        onChange={handleClick}
       />
       <label className="toggle__label" htmlFor={`temp-switch`}>
         <span className="toggle__span"></span>

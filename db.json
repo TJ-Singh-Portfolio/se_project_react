@@ -101,6 +101,18 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "Designer T-shirt",
+      "weather": "hot",
+      "imageUrl": "https://i.etsystatic.com/15646117/r/il/21878a/3217596472/il_570xN.3217596472_az1l.jpg",
+      "_id": 18
+    },
+    {
+      "name": "Bomber Jacket",
+      "weather": "cold",
+      "imageUrl": "https://buffalojackson.com/cdn/shop/products/Ranger-leather-bomber-jacket-distressed-brown-3_c8cc0d35-d52b-4c1f-ac97-f42cd15033c1_2000x.jpg?v=1666971692",
+      "_id": 19
     }
   ]
 }

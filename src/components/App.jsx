@@ -19,8 +19,8 @@ function App(props) {
   const [city, setCity] = useState();
   const [weather, setWeather] = useState();
   const [clothingItems, setClothingItems] = useState([]);
-  const [modalState, setModalState] = useState(closed);
-  const [itemModalState, setItemModalState] = useState(closed);
+  const [modalState, setModalState] = useState("closed");
+  const [itemModalState, setItemModalState] = useState("closed");
   const [checkboxState, setCheckboxState] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -28,20 +28,23 @@ function App(props) {
   useEffect(() => {
     getInfo()
       .then((res) => {
-        setTempF(Math.floor(res[0]));
-        setTemp(Math.floor(res[0]));
+        setTempF(Math.floor(res["Fahrenheit"]));
+        console.log(res["Fahrenheit"]);
+        setTemp(Math.floor(res["Fahrenheit"]));
         // Math.floor() is used here because requests will keep firing to the server otherwise.
-        setCity(res[1]);
-        setWeather(res[2]);
-        setTempC(res[3]);
+        setCity(res["City"]);
+        setWeather(res["Weather"]);
+        setTempC(res["Celsius"]);
       })
       .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
-    getItems().then((res) => {
-      setClothingItems(res);
-    });
+    getItems()
+      .then((res) => {
+        setClothingItems(res);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
@@ -99,20 +102,24 @@ function App(props) {
       weather: weatherInputValue,
       imageUrl: imageInputValue,
     };
-    addItem(item).then((res) => {
-      setClothingItems([res, ...clothingItems]);
-      setModalState("closed");
-    });
+    addItem(item)
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+        setModalState("closed");
+      })
+      .catch((err) => console.error(err));
   }
 
   function handleDeleteItem(selectedCard) {
-    deleteItem(selectedCard._id).then((res) => {
-      const filteredArray = clothingItems.filter((item) => {
-        return item.name !== selectedCard.name ? item : null;
-      });
-      setClothingItems(filteredArray);
-      setItemModalState("closed");
-    });
+    deleteItem(selectedCard._id)
+      .then((res) => {
+        const filteredArray = clothingItems.filter((item) => {
+          return item.name !== selectedCard.name ? item : null;
+        });
+        setClothingItems(filteredArray);
+        setItemModalState("closed");
+      })
+      .catch((err) => console.error(err));
   }
 
   return (
@@ -158,7 +165,7 @@ function App(props) {
         <ItemModal
           selectedCard={selectedCard}
           state={itemModalState}
-          weather={weather}
+          weather={selectedCard.weather}
           onClick={handleDeleteItem}
         />
         <Footer />

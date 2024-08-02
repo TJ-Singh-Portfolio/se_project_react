@@ -11,7 +11,7 @@ function Main(props) {
   const currentUnit = React.useContext(CurrentTemperatureUnitContext);
 
   return (
-    <>
+    <main className="main">
       <WeatherCard temperature={props.temperature} />
       <h2 className="main__header">{`Today is ${props.temperature}°${currentUnit["currentTemperatureUnit"]} / You may want to wear:`}</h2>
       <ul className="main__items">
@@ -27,7 +27,7 @@ function Main(props) {
           );
         })}
       </ul>
-    </>
+    </main>
   );
 }
 export default Main;

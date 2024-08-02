@@ -42,6 +42,7 @@ function AddItemModal(props) {
         id="name"
         placeholder="Name"
         onChange={onNameChange}
+        value={nameInputValue}
       />
       <label className="modal__label" htmlFor="image">
         Image
@@ -52,6 +53,7 @@ function AddItemModal(props) {
         id="image"
         placeholder="Image URL"
         onChange={onImageChange}
+        value={imageInputValue}
       />
       <p className="modal__radio-title">Select the weather type:</p>
       <div className="modal__radio-container">
@@ -62,6 +64,7 @@ function AddItemModal(props) {
             id="hot"
             name="weather"
             onChange={onWeatherChange}
+            value={weatherInputValue}
           />
           <label htmlFor="hot" className="modal__radio-label">
             Hot
@@ -74,6 +77,7 @@ function AddItemModal(props) {
             id="warm"
             name="weather"
             onChange={onWeatherChange}
+            value={weatherInputValue}
           />
           <label htmlFor="warm" className="modal__radio-label">
             Warm
@@ -86,6 +90,7 @@ function AddItemModal(props) {
             id="cold"
             name="weather"
             onChange={onWeatherChange}
+            value={weatherInputValue}
           />
           <label htmlFor="cold" className="modal__radio-label">
             Cold

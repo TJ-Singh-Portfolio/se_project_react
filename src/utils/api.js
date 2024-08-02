@@ -31,4 +31,4 @@ const deleteItem = (id) => {
   }).then(processServerResponse);
 };
 
-export { getItems, addItem, deleteItem };
+export { processServerResponse, getItems, addItem, deleteItem };

@@ -20,6 +20,11 @@
   top: 20px;
 }
 
+.item-modal__image {
+  max-width: 498px;
+  max-height: 498px;
+}
+
 .item-modal__close:hover {
   cursor: pointer;
 }
