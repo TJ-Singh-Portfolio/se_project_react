@@ -29,7 +29,7 @@ function AddItemModal(props) {
     <ModalWithForm
       name="form1"
       title="New Garment"
-      buttonText="Add Garment"
+      buttonText={props.buttonText}
       state={props.state}
       onSubmit={handleSubmit}
     >

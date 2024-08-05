@@ -20,7 +20,7 @@ function ItemModal(props) {
           type="button"
           onClick={handleClick}
         >
-          Delete Item
+          {props.buttonText}
         </button>
       </div>
     </div>

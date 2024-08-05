@@ -55,10 +55,6 @@
   transform: translateX(-100%);
 }
 
-/*.toggle__checkbox:checked + .toggle__text {
-  color: #000;
-}*/
-
 .toggle__label:active .toggle__span {
   width: 60px;
 }

@@ -29,6 +29,10 @@
   opacity: 0.6;
 }
 
+.clothes-section__header-button:hover {
+  cursor: pointer;
+}
+
 .clothes-section__items-cards {
   display: grid;
   padding: 0;

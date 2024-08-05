@@ -8,12 +8,16 @@ const processServerResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
+function request(url, options) {
+  return fetch(url, options).then(processServerResponse);
+}
+
 const getItems = () => {
-  return fetch(`${baseUrl}/items`).then(processServerResponse);
+  return request(`${baseUrl}/items`);
 };
 
 const addItem = ({ name, weather, imageUrl }) => {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({
@@ -21,14 +25,14 @@ const addItem = ({ name, weather, imageUrl }) => {
       weather: weather,
       imageUrl: imageUrl,
     }),
-  }).then(processServerResponse);
+  });
 };
 
 const deleteItem = (id) => {
-  return fetch(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: headers,
-  }).then(processServerResponse);
+  });
 };
 
 export { processServerResponse, getItems, addItem, deleteItem };

@@ -106,13 +106,13 @@
       "name": "Designer T-shirt",
       "weather": "hot",
       "imageUrl": "https://i.etsystatic.com/15646117/r/il/21878a/3217596472/il_570xN.3217596472_az1l.jpg",
-      "_id": 18
+      "_id": 17
     },
     {
       "name": "Bomber Jacket",
-      "weather": "cold",
+      "weather": "hot",
       "imageUrl": "https://buffalojackson.com/cdn/shop/products/Ranger-leather-bomber-jacket-distressed-brown-3_c8cc0d35-d52b-4c1f-ac97-f42cd15033c1_2000x.jpg?v=1666971692",
-      "_id": 19
+      "_id": 18
     }
   ]
 }

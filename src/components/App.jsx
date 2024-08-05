@@ -24,12 +24,12 @@ function App(props) {
   const [checkboxState, setCheckboxState] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getInfo()
       .then((res) => {
         setTempF(Math.floor(res["Fahrenheit"]));
-        console.log(res["Fahrenheit"]);
         setTemp(Math.floor(res["Fahrenheit"]));
         // Math.floor() is used here because requests will keep firing to the server otherwise.
         setCity(res["City"]);
@@ -102,15 +102,20 @@ function App(props) {
       weather: weatherInputValue,
       imageUrl: imageInputValue,
     };
+    setIsLoading(true);
     addItem(item)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         setModalState("closed");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   function handleDeleteItem(selectedCard) {
+    setIsLoading(true);
     deleteItem(selectedCard._id)
       .then((res) => {
         const filteredArray = clothingItems.filter((item) => {
@@ -119,7 +124,10 @@ function App(props) {
         setClothingItems(filteredArray);
         setItemModalState("closed");
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
@@ -161,12 +169,17 @@ function App(props) {
             }
           />
         </Routes>
-        <AddItemModal state={modalState} onAddItem={handleAddItemSubmit} />
+        <AddItemModal
+          state={modalState}
+          onAddItem={handleAddItemSubmit}
+          buttonText={isLoading ? "Loading" : "Add Garment"}
+        />
         <ItemModal
           selectedCard={selectedCard}
           state={itemModalState}
           weather={selectedCard.weather}
           onClick={handleDeleteItem}
+          buttonText={isLoading ? "Loading" : "Delete Item"}
         />
         <Footer />
       </CurrentTemperatureUnitContext.Provider>
