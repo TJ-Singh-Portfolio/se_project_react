@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import viteLogo from "/vite.svg";
 import "../App.css";
 import Header from "./Header";
 import Main from "./Main";

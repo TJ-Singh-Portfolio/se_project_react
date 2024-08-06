@@ -23,6 +23,9 @@
 .item-modal__image {
   max-width: 498px;
   max-height: 498px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .item-modal__close:hover {
